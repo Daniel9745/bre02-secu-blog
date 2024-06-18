@@ -12,8 +12,5 @@ class DefaultController{
         require "templates/layout.phtml";
     }
 
-    public function notfound(): void {
-        $template = "templates/404.phtml";
-        require "templates/layout.phtml";
-    }
+    
 }

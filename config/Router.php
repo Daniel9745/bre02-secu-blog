@@ -3,42 +3,36 @@
 class Router{
 
     private DefaultController $dc;
-    private CategoryController $cc;
+    private PostController $pc;
+    private CommentController $cc;
 
     public function __construct(){
         $this->dc = new DefaultController();
-        $this->cc = new CategoryController();
+        $this->pc = new PostController();
+        $this->cc = new CommentController();
     }
     public function handleRequest(?string $route): void{
         if($route !== null && $route === "home"){
             $this->dc->home();
         }
-        else if($route !== null && $route === "add-category"){
-            echo "je veux appeler la route pour ajouter une categories";
+        else if($route !== null && $route === "post"){
+            // echo "<h1>je suis une page </h1>";
+            $this->pc->getPosts();
         }
-        else if($route !== null && $route === "get-categories"){
-            $this->cc->getCategories();
+        elseif($id !==null && $id === $_GET["id"]){
+            
         }
-        else if($route !== null && $route === "get-category"){
-            $this->cc->getCategory();
+        else if($route !== null && $route === "post-categories"){
+            $this->pc->getPostsCategories($post_id);
         }
-        else if($route !== null && $route === "add-room"){
-            echo "je veux appeler la route pour ajouter une salle";
-        }
-        else if($route !== null && $route === "add-message"){
-            echo "je veux appeler la route pour ajouter un message";
-        }
-        else if($route !== null && $route === "show-room"){
-            echo "je veux une room";
-        }
-        else if($route !== null && $route === "get-rooms"){
-            echo "Je veux afficher la route pour recuperer les salons";
+        elseif($route !== null && $route === "comment"){
+            $this->cc->getComment($comment);
         }
         else if($route === null){
             $this->dc->home();
         }
-        else{
-            $this->dc->notFound();
-        }
+        // else{
+        //     $this->dc->notFound();
+        // }
     }
 }

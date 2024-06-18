@@ -1,0 +1,8 @@
+<main>
+    <?php foreach($result as $item){ ?>
+        <h1><?= $item->getTitle() ?></h1> <br>
+        <p><?= $item->getExcerpt() ?></p>
+        <?= $item->getContent() ?>
+    <?php } ?>
+    test
+</main>
